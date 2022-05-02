@@ -1,0 +1,27 @@
+<%- include('../partials/html-head') %> <%- include('../partials/nav') %>
+
+<section>
+  <h1>Monsters</h1>
+  <% if (user) { %>
+  <h2>Add a Monster!</h2>
+  <form action="/monster" method="POST">
+    <label>
+      Name:
+      <input type="text" name="name" autocomplete="off" />
+    </label>
+    <label>
+      isScary?
+      <input type="checkbox" name="isScary" />
+    </label>
+    <button type="submit">Add Monster</button>
+  </form>
+  <% } %>
+  <h2>All monsters</h2>
+  <ul>
+    <% monsters.forEach(monster => { %>
+    <li><%= monster.name %></li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
