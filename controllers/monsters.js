@@ -24,6 +24,7 @@ function update(res, req) {
   Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
+      console.log(req.body);
       console.log(err);
       res.status(500).json(err);
     });
