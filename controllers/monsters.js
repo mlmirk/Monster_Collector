@@ -1,17 +1,24 @@
 import { Monster } from "../models/monster.js";
 
 function index(req, res) {
-  Monster.find({})
-    .then((monsters) => {
-      res.render("monsters/index", {
-        monsters,
-        title: "Monsters",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.redirect("/monster");
-    });
+  const monster = Monster.find({})
+  if(monster){
+    return monster; }
+
+    return res
+    .send({ error: `No Monsters found` });
+}
+
+    // .then((monsters) => {
+    //   res.render("monsters/index", {
+    //     monsters,
+    //     title: "Monsters",
+    //   });
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    //   res.redirect("/monster");
+    // });
 }
 
 function create(req, res) {
