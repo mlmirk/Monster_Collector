@@ -11,7 +11,7 @@ function index(req, res) {
     });
 }
 
-function findOneMonster(req, res) {
+function show(req, res) {
   Monster.findById(req.params.id)
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
@@ -46,4 +46,4 @@ function create(req, res) {
     });
 }
 
-export { index, create, deleteMonster, update, findOneMonster };
+export { index, create, deleteMonster, update, show };
