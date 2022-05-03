@@ -4,7 +4,9 @@ import * as monsterController from "../controllers/monsters.js";
 import { isLoggedIn } from "../middleware/middleware.js";
 
 router.get("/", monsterController.index);
+router.get("/:id", monsterController.findOne);
 router.post("/", monsterController.create);
-router.put("/", monsterController.update);
-router.delete("/", monsterController.deleteMonster);
+router.put("/:id", monsterController.update);
+router.delete("/:id", monsterController.deleteMonster);
+
 export { router };

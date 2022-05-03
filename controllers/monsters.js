@@ -10,8 +10,18 @@ function index(req, res) {
       res.status(500).json(err);
     });
 }
+
+function findOne(req, res) {
+  Monster.findById(req.params.id)
+    .then((monster) => res.status(200).json(monster))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+}
+
 function update(res, req) {
-  Monster.findbyIdAndUpdate(req.parameters.id, req.body, { new: true })
+  Monster.findbyIdAndUpdate(req.params.id, req.body, { new: true })
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
       console.log(err);
@@ -26,16 +36,6 @@ function deleteMonster(req, res) {
       res.status(500).json(err);
     });
 }
-// .then((monsters) => {
-//   res.render("monsters/index", {
-//     monsters,
-//     title: "Monsters",
-//   });
-// })
-// .catch((err) => {
-//   console.log(err);
-//   res.redirect("/monster");
-// });
 
 function create(req, res) {
   Monster.create(req.body)
@@ -46,4 +46,4 @@ function create(req, res) {
     });
 }
 
-export { index, create, deleteMonster, update };
+export { index, create, deleteMonster, update, findOne };
