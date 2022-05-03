@@ -7,8 +7,7 @@ import session from "express-session";
 import logger from "morgan";
 import methodOverride from "method-override";
 import passport from "passport";
-
-const cors = require("cors");
+import cors from "cors";
 
 // connect to MongoDB with mongoose
 import("./config/database.js");
