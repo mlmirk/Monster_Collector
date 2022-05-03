@@ -18,7 +18,7 @@ router.get(
 
 router.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("/");
+  res.redirect("https://mosserryan.github.io/JMRmonS_FrontEnd");
 });
 
 export { router };
