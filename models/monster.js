@@ -6,6 +6,9 @@ const monsterSchema = new Schema({
   name: String,
   imageURL: String,
   isScary: Boolean,
+  codeType: String,
+  description: String,
+
   owner: { type: Schema.Types.ObjectId, ref: "Profile" },
 });
 

@@ -3,8 +3,8 @@ const router = Router();
 import * as monsterController from "../controllers/monsters.js";
 import { isLoggedIn } from "../middleware/middleware.js";
 
-router.get("/", monsterController.index);
-router.post("/", monsterController.create);
+router.get("/:id", monsterController.index);
+router.post("/:id", monsterController.create);
 router.put("/", monsterController.update);
-router.delete("/", monsterController.deleteMonster);
+router.delete("/:id", monsterController.deleteMonster);
 export { router };

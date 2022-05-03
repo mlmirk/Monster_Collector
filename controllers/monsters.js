@@ -11,15 +11,16 @@ function index(req, res) {
     });
 }
 function update(res, req) {
-  Monster.findbyIdAndUpdate(req.parameters.id, req.body, { new: true })
+  Monster.findbyIdAndUpdate(req.params.id, req.body, { new: true })
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 }
-function delete(req, res) {
-  Monsters.findbyIdAnd
+function deleteMonster(req, res) {
+  Monsters.findbyIdAndDelete(req.params.id, req.body,)
+  .then((monster)) => res.status(204).end
 }
 // .then((monsters) => {
 //   res.render("monsters/index", {
@@ -41,4 +42,4 @@ function create(req, res) {
     });
 }
 
-export { index, create };
+export { index, create, deleteMonster };
