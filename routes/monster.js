@@ -5,5 +5,6 @@ import { isLoggedIn } from "../middleware/middleware.js";
 
 router.get("/", monsterController.index);
 router.post("/", monsterController.create);
-
+router.put("/", monsterController.update);
+router.delete("/", monsterController.deleteMonster);
 export { router };
