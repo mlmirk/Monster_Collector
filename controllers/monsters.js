@@ -8,8 +8,8 @@ function index(req, res) {
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-    });
-}
+    }
+
 
 function show(req, res) {
   Monster.findById(req.params.id)
@@ -22,6 +22,7 @@ function show(req, res) {
 
 function update(req, res) {
   Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
+
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
       console.log(req.body);
@@ -30,12 +31,14 @@ function update(req, res) {
     });
 }
 function deleteMonster(req, res) {
+
   Monster.findByIdAndDelete(req.params.id)
     .then((monster) => res.status(204).end())
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
+
 }
 
 function create(req, res) {
@@ -48,3 +51,4 @@ function create(req, res) {
 }
 
 export { index, create, deleteMonster, update, show };
+
