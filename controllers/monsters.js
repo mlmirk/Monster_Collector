@@ -21,7 +21,7 @@ function show(req, res) {
 }
 
 function update(res, req) {
-  Monster.findbyIdAndUpdate(req.params.id, req.body, { new: true })
+  Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
       console.log(err);
