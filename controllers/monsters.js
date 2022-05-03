@@ -2,8 +2,8 @@ import { Monster } from "../models/monster.js";
 
 function index(req, res) {
   Monster.find({})
-    .then((puppies) => {
-      res.status(200).json(puppies);
+    .then((monster) => {
+      res.status(200).json(monster);
     })
     .catch((err) => {
       console.log(err);
@@ -23,15 +23,11 @@ function index(req, res) {
 // });
 
 function create(req, res) {
-  req.body.owner = req.user.profile._id;
-  req.body.isScary = !!req.body.isScary;
   Monster.create(req.body)
-    .then((monster) => {
-      res.redirect("/monster");
-    })
+    .then((monster) => res.status(201).json(monster))
     .catch((err) => {
       console.log(err);
-      res.redirect("/monster");
+      res.status(500).json(err);
     });
 }
 

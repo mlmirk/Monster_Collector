@@ -4,6 +4,6 @@ import * as monsterController from "../controllers/monsters.js";
 import { isLoggedIn } from "../middleware/middleware.js";
 
 router.get("/", monsterController.index);
-router.post("/", isLoggedIn, monsterController.create);
+router.post("/", monsterController.create);
 
 export { router };
