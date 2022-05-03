@@ -1,26 +1,24 @@
-import { Router } from 'express'
-import passport from 'passport'
+import { Router } from "express";
+import passport from "passport";
 
-const router = Router()
-
-router.get(
-  '/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
-)
+const router = Router();
 
 router.get(
-  '/google/oauth2callback',
-  passport.authenticate('google', {
-    successRedirect: '/',
-    failureRedirect: '/auth/google',
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+router.get(
+  "/google/oauth2callback",
+  passport.authenticate("google", {
+    successRedirect: "https://mosserryan.github.io/JMRmonS_FrontEnd/home",
+    failureRedirect: "/auth/google",
   })
-)
+);
 
-router.get('/logout', function (req, res) {
-  req.logout()
-  res.redirect('/')
-})
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
-export {
-  router
-}
+export { router };

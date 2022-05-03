@@ -8,30 +8,38 @@ function index(req, res) {
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
-    });
-}
-function update(res, req) {
-  Monster.findbyIdAndUpdate(req.params.id, req.body, { new: true })
+    }
+
+
+function show(req, res) {
+  Monster.findById(req.params.id)
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 }
-function deleteMonster(req, res) {
-  Monsters.findbyIdAndDelete(req.params.id, req.body,)
-  .then((monster)) => res.status(204).end
+
+function update(req, res) {
+  Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
+
+    .then((monster) => res.status(200).json(monster))
+    .catch((err) => {
+      console.log(req.body);
+      console.log(err);
+      res.status(500).json(err);
+    });
 }
-// .then((monsters) => {
-//   res.render("monsters/index", {
-//     monsters,
-//     title: "Monsters",
-//   });
-// })
-// .catch((err) => {
-//   console.log(err);
-//   res.redirect("/monster");
-// });
+function deleteMonster(req, res) {
+
+  Monster.findByIdAndDelete(req.params.id)
+    .then((monster) => res.status(204).end())
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+
+}
 
 function create(req, res) {
   Monster.create(req.body)
@@ -42,4 +50,5 @@ function create(req, res) {
     });
 }
 
-export { index, create, deleteMonster };
+export { index, create, deleteMonster, update, show };
+
