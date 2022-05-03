@@ -8,6 +8,8 @@ import logger from "morgan";
 import methodOverride from "method-override";
 import passport from "passport";
 
+var cors = require("cors");
+
 // connect to MongoDB with mongoose
 import("./config/database.js");
 
@@ -31,6 +33,7 @@ app.set(
 app.set("view engine", "ejs");
 
 // middleware
+app.use(cors());
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
 app.use(express.json());
