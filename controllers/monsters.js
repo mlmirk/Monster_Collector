@@ -25,7 +25,6 @@ function show(req, res) {
 // Update or change individual monster by id
 function update(req, res) {
   Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
-
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
       console.log(req.body);
