@@ -40,6 +40,7 @@ function deleteMonster(req, res) {
 }
 
 function create(req, res) {
+  req.body.owner = req.user.profile._id;
   Monster.create(req.body)
     .then((monster) => res.status(201).json(monster))
     .catch((err) => {
