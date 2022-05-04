@@ -53,7 +53,7 @@ function create(req, res) {
 }
 // find monster by querying option 1
 function search(req, res) {
-  Monster.find({ name: { $regex: req.params.search } })
+  Monster.find({ name: /req.params.search/i })
     .then((monster) => res.status(200).json(monster))
     .catch((err) => {
       console.log(err);
