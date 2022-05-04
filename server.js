@@ -38,7 +38,7 @@ app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
 //var SQLiteStore = require("connect-sqlite3")(session);
-app.use(SQLiteStore(session));
+app.use(SQLiteStore("session"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
