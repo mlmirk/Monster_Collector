@@ -5,7 +5,7 @@ import { isLoggedIn } from "../middleware/middleware.js";
 
 router.get("/", monsterController.index);
 router.get("/:id", monsterController.show);
-router.post("/", isLoggedIn, monsterController.create);
+router.post("/", monsterController.create);
 router.put("/:id", monsterController.update);
 router.delete("/:id", monsterController.deleteMonster);
 
