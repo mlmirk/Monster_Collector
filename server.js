@@ -8,7 +8,6 @@ import logger from "morgan";
 import methodOverride from "method-override";
 import passport from "passport";
 import cors from "cors";
-import SQLiteStore from "connect-sqlite3";
 
 // connect to MongoDB with mongoose
 import("./config/database.js");
@@ -37,8 +36,6 @@ app.set("view engine", "ejs");
 
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
-//var SQLiteStore = require("connect-sqlite3")(session);
-app.use(SQLiteStore("session"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -53,10 +50,12 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
+    cookie: {
+      sameSite: "lax",
+    },
   })
 );
-app.use(passport.authenticate("session"));
+
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
