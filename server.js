@@ -8,6 +8,7 @@ import logger from "morgan";
 import methodOverride from "method-override";
 import passport from "passport";
 import cors from "cors";
+import SQLiteStore from "connect-sqlite3";
 
 // connect to MongoDB with mongoose
 import("./config/database.js");
@@ -36,7 +37,8 @@ app.set("view engine", "ejs");
 
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
-var SQLiteStore = require("connect-sqlite3")(session);
+//var SQLiteStore = require("connect-sqlite3")(session);
+app.use(SQLiteStore(session));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
