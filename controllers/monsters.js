@@ -25,7 +25,7 @@ function show(req, res) {
 // Update or change individual monster by id
 function update(req, res) {
   Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((monster) => res.status(200).json(monster))
+    //.then((monster) => res.status(200).json(monster))
     .then(res.redirect("http://127.0.0.1:5502/monsters.html"))
     .catch((err) => {
       console.log(req.body);
