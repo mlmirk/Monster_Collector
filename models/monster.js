@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-
+// Define a Schema
 const Schema = mongoose.Schema;
-
+// create Monster Schema with Schema types
 const monsterSchema = new Schema({
   name: String,
   imageURL: String,
@@ -11,7 +11,7 @@ const monsterSchema = new Schema({
 
   owner: { type: Schema.Types.ObjectId, ref: "Profile" },
 });
-
+// create a Monster model
 const Monster = mongoose.model("Monster", monsterSchema);
 
 export { Monster };
