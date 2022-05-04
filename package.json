@@ -7,6 +7,7 @@
     "start": "node ./bin/www.js"
   },
   "dependencies": {
+    "connect-sqlite3": "^0.9.13",
     "cors": "^2.8.5",
     "debug": "^4.3.3",
     "dotenv": "^16.0.0",

@@ -36,6 +36,7 @@ app.set("view engine", "ejs");
 
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
+var SQLiteStore = require("connect-sqlite3")(session);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -50,12 +51,10 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      sameSite: "lax",
-    },
+    store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
   })
 );
-
+app.use(passport.authenticate("session"));
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
