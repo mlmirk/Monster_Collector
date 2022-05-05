@@ -2,7 +2,7 @@
 //import { app } from '../server.js'
 const { app } = require("../server.js");
 //import debug from "debug";
-const debug = require("debug")(http);
+const debug = require("debug");
 //import http from "http";
 const http = require("http");
 
