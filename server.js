@@ -31,17 +31,9 @@ const config = {
 app.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
-app.get("/", (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
-
-// auth router attaches /login, /logout, and /callback routes to the baseURL
-app.use(auth(config));
-
-// req.isAuthenticated is provided from the auth router
-app.get("/", (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
+// app.get("/", (req, res) => {
+//   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+// });
 
 // var { expressjwt: jwt } = require("express-jwt");
 // var jwks = require("jwks-rsa");
