@@ -47,8 +47,8 @@ var jwtCheck = jwt({
   algorithms: ["RS256"],
 });
 
-app.use(jwtCheck);
-app.set("view engine", "ejs");
+//app.use(jwtCheck);
+//app.set("view engine", "ejs");
 
 // middleware
 
@@ -74,20 +74,20 @@ app.use("/", indexRouter);
 app.use("/monster", monsterRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
 
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+// app.use(function (err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error", {
-    title: `🎊 ${err.status || 500} Error`,
-  });
-});
+//   // render the error page
+//   res.status(err.status || 500).send();
+//   // res.render("error", {
+//   //   title: `🎊 ${err.status || 500} Error`,
+//   // });
+// });
 
 module.exports = { app, express };
