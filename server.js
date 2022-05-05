@@ -22,7 +22,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: "CG90x-uhgyVP44PHVDRC1bi8i2V7LkubA5Q6TmoQVqPFdDcLHNTMLFOYvvmTi7w4",
-  baseURL: "https://mosserryan.github.io/JMRmonS_FrontEnd/",
+  baseURL: "https://mosserryan.github.io",
   clientID: "GIDF8TIIZNKUM0OeR7lug1aDSCs6kxNm",
   issuerBaseURL: "https://dev-3splgcvt.us.auth0.com",
 };
