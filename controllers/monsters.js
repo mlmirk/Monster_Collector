@@ -29,7 +29,7 @@ function update(req, res) {
     .then(
       res.redirect(
         200,
-        `https://mosserryan.github.io/JMRmonS_FrontEnd/monsters${req.params.id}`
+        `https://mosserryan.github.io/JMRmonS_FrontEnd/monsters/${req.params.id}`
       )
     )
     .catch((err) => {
