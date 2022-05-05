@@ -1,4 +1,4 @@
-import { Router } from "express";
+//import { Router } from "express";
 const express = require("express");
 
 const monsterRouter = express.Router();
@@ -21,4 +21,4 @@ monsterRouter.post("/", create);
 monsterRouter.post("/:id", update);
 monsterRouter.delete("/:id", deleteMonster);
 
-export { monsterRouter };
+module.exports = { monsterRouter };
