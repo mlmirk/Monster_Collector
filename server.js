@@ -70,7 +70,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // router middleware
 app.use("/", indexRouter);
-app.use("/monster", checkJwt, monsterRouter);
+app.use("/monster", monsterRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
