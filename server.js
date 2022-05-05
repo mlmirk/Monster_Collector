@@ -25,7 +25,7 @@ var { monsterRouter } = require("./routes/monster.js");
 
 // create the express app
 const app = express();
-var jwt = require("express-jwt");
+var { expressjwt: jwt } = require("express-jwt");
 var jwks = require("jwks-rsa");
 app.use(cors());
 
