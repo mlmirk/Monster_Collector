@@ -21,9 +21,9 @@ const { auth } = require("express-openid-connect");
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret: "a long, randomly-generated string stored in env",
+  secret: "CG90x-uhgyVP44PHVDRC1bi8i2V7LkubA5Q6TmoQVqPFdDcLHNTMLFOYvvmTi7w4",
   baseURL: "https://monster-collector.herokuapp.com/",
-  clientID: "DBcOEkKUWGQVaktG4XuSdMRsRLRIbXxo",
+  clientID: "GIDF8TIIZNKUM0OeR7lug1aDSCs6kxNm",
   issuerBaseURL: "https://dev-3splgcvt.us.auth0.com",
 };
 
