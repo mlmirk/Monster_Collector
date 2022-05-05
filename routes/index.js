@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-const router = Router();
+const indexRouter = Router();
 
 router.get("/", function (req, res) {
   res.send("Secured Resource");
 });
 
-export { router };
+export { indexRouter };

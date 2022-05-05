@@ -22,9 +22,11 @@ var config = require("./config/database.js");
 //auth0
 
 // require routes
-import { router as indexRouter } from "./routes/index.js";
-import { router as monsterRouter } from "./routes/monster.js";
-import { passUserToView } from "./middleware/middleware.js";
+//import { router as indexRouter } from "./routes/index.js";
+var { indexRouter } = require("./routes/index.js");
+var { monsterRouter } = require("./routes/monster.js");
+//import { router as monsterRouter } from "./routes/monster.js";
+//import { passUserToView } from "./middleware/middleware.js";
 
 // create the express app
 const app = express();
@@ -67,7 +69,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // session middleware
 
-app.use(passUserToView);
+//app.use(passUserToView);
 
 //custom middleware
 

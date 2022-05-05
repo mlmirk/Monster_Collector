@@ -1,5 +1,5 @@
 import { Router } from "express";
-const router = Router();
+const monsterRouter = Router();
 import * as monsterController from "../controllers/monsters.js";
 import { isLoggedIn } from "../middleware/middleware.js";
 
@@ -12,4 +12,4 @@ router.post("/", monsterController.create);
 router.post("/:id", monsterController.update);
 router.delete("/:id", monsterController.deleteMonster);
 
-export { router };
+export { monsterRouter };
