@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 // Define a Schema
 const Schema = mongoose.Schema;
 // create Monster Schema with Schema types
