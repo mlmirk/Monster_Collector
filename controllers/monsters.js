@@ -26,7 +26,12 @@ function show(req, res) {
 function update(req, res) {
   Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
     //.then((monster) => res.status(200).json(monster))
-    .then(res.redirect("http://127.0.0.1:5502/monsters.html"))
+    .then(
+      res.redirect(
+        200,
+        `https://mosserryan.github.io/JMRmonS_FrontEnd/monsters${req.params.id}`
+      )
+    )
     .catch((err) => {
       console.log(req.body);
       console.log(err);
