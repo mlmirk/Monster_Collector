@@ -22,7 +22,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: "a long, randomly-generated string stored in env",
-  baseURL: "https://mosserryan.github.io/JMRmonS_FrontEnd/",
+  baseURL: "https://monster-collector.herokuapp.com/",
   clientID: "DBcOEkKUWGQVaktG4XuSdMRsRLRIbXxo",
   issuerBaseURL: "https://dev-3splgcvt.us.auth0.com",
 };
