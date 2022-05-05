@@ -3,24 +3,33 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import createError from "http-errors";
-
 import logger from "morgan";
 import methodOverride from "method-override";
-
+import { expressjwt, ExpressJwtRequest } from "express-jwt";
+import { JwksClient } from "jwks-rsa";
 import cors from "cors";
-import { auth } from "express-openid-connect";
+import { auth } from "express-oauth2-jwt-bearer";
+
 // connect to MongoDB with mongoose
 import("./config/database.js");
+var jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: "https://dev-3splgcvt.us.auth0.com/.well-known/jwks.json",
+  }),
+  audience: "https://monster-collector.herokuapp.com/",
+  issuer: "https://dev-3splgcvt.us.auth0.com/",
+  algorithms: ["RS256"],
+});
 
+const checkJwt = auth({
+  audience: "https://monster-collector.herokuapp.com/",
+  issuerBaseURL: `https://mosserryan.github.io/JMRmonS_FrontEnd/`,
+});
 //auth0
-const config = {
-  authRequired: false,
-  auth0Logout: true,
-  secret: process.env.SESSION_SECRET,
-  baseURL: "https://mosserryan.github.io/JMRmonS_FrontEnd/",
-  clientID: "47Jm3kkR6DMitI7YGSh8eAPk9dlbpfQV",
-  issuerBaseURL: "https://dev-adr32rpm.us.auth0.com",
-};
+
 // require routes
 import { router as indexRouter } from "./routes/index.js";
 import { router as monsterRouter } from "./routes/monster.js";
@@ -29,6 +38,7 @@ import { passUserToView } from "./middleware/middleware.js";
 // create the express app
 const app = express();
 app.use(cors());
+app.use(jwtCheck);
 
 // view engine setup
 
@@ -44,7 +54,7 @@ app.use(
   )
 );
 //auth0 router intiialization
-app.use(auth(config));
+
 // session middleware
 
 app.use(passUserToView);
@@ -53,7 +63,7 @@ app.use(passUserToView);
 
 // router middleware
 app.use("/", indexRouter);
-app.use("/monster", monsterRouter);
+app.use("/monster", checkJwt, monsterRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
