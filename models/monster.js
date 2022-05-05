@@ -14,4 +14,4 @@ const monsterSchema = new Schema({
 // create a Monster model
 const Monster = mongoose.model("Monster", monsterSchema);
 
-export { Monster };
+module.exports = { Monster };

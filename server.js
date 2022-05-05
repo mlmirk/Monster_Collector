@@ -1,16 +1,13 @@
-//import "dotenv/config.js";
 require("dotenv").config();
-// import express from "express";
+
 const express = require("express");
-//import path from "path";
-// import { fileURLToPath } from "url";
-// import createError from "http-errors";
+
 const createError = require("http-errors");
-//import logger from "morgan";
+
 const logger = require("morgan");
-//import methodOverride from "method-override";
+
 const methodOverride = require("method-override");
-// import cors from "cors";
+
 const cors = require("cors");
 
 // connect to MongoDB with mongoose
@@ -92,4 +89,4 @@ app.use(function (err, req, res, next) {
   });
 });
 
-export { app, express };
+module.exports = { app, express };

@@ -1,5 +1,4 @@
-import { Monster } from "../models/monster.js";
-
+const { Monster } = require("../models/monster.js");
 //Controller functions to get data from the models, return it, and display it
 
 // get all monsters
@@ -67,4 +66,4 @@ function search(req, res) {
     });
 }
 
-export { index, create, deleteMonster, update, show, search };
+module.exports = { index, create, deleteMonster, update, show, search };

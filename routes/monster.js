@@ -1,15 +1,24 @@
 import { Router } from "express";
-const monsterRouter = Router();
-import * as monsterController from "../controllers/monsters.js";
-import { isLoggedIn } from "../middleware/middleware.js";
+const express = require("express");
+
+const monsterRouter = express.Router();
+//import * as monsterController from "../controllers/monsters.js";
+const {
+  index,
+  create,
+  deleteMonster,
+  update,
+  show,
+  search,
+} = require("../controllers/monsters.js");
 
 // routers for CRUD operations
 
-router.get("/", monsterController.index);
-router.get("/:id", monsterController.show);
-router.get("/search/:search", monsterController.search);
-router.post("/", monsterController.create);
-router.post("/:id", monsterController.update);
-router.delete("/:id", monsterController.deleteMonster);
+monsterRouter.get("/", index);
+monsterRouter.get("/:id", show);
+monsterRouter.get("/search/:search", search);
+monsterRouter.post("/", create);
+monsterRouter.post("/:id", update);
+monsterRouter.delete("/:id", deleteMonster);
 
 export { monsterRouter };

@@ -1,9 +1,10 @@
-import { Router } from "express";
+//import { Router } from "express";
+const express = require("express");
 
-const indexRouter = Router();
+const indexRouter = express.Router();
 
-router.get("/", function (req, res) {
+indexRouter.get("/", function (req, res) {
   res.send("Secured Resource");
 });
 
-export { indexRouter };
+module.exports = { indexRouter };
