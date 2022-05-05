@@ -5,14 +5,31 @@ import { fileURLToPath } from "url";
 import createError from "http-errors";
 import logger from "morgan";
 import methodOverride from "method-override";
-import { expressjwt } from "express-jwt";
-import { JwksClient } from "jwks-rsa";
 import cors from "cors";
-import { auth } from "express-oauth2-jwt-bearer";
 
 // connect to MongoDB with mongoose
 import("./config/database.js");
-var jwtCheck = expressjwt({
+
+//auth0
+
+// require routes
+import { router as indexRouter } from "./routes/index.js";
+import { router as monsterRouter } from "./routes/monster.js";
+import { passUserToView } from "./middleware/middleware.js";
+
+// create the express app
+const app = express();
+var jwt = require("express-jwt");
+var jwks = require("jwks-rsa");
+app.use(cors());
+
+const { auth } = require("express-oauth2-jwt-bearer");
+
+const checkJwt = auth({
+  audience: "https://monster-collector.herokuapp.com/",
+  issuerBaseURL: `https://mosserryan.github.io/JMRmonS_FrontEnd/`,
+});
+var jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
@@ -24,23 +41,7 @@ var jwtCheck = expressjwt({
   algorithms: ["RS256"],
 });
 
-const checkJwt = auth({
-  audience: "https://monster-collector.herokuapp.com/",
-  issuerBaseURL: `https://mosserryan.github.io/JMRmonS_FrontEnd/`,
-});
-//auth0
-
-// require routes
-import { router as indexRouter } from "./routes/index.js";
-import { router as monsterRouter } from "./routes/monster.js";
-import { passUserToView } from "./middleware/middleware.js";
-
-// create the express app
-const app = express();
-app.use(cors());
 app.use(jwtCheck);
-
-// view engine setup
 
 // middleware
 
