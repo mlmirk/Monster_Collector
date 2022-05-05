@@ -12,8 +12,6 @@ const logger = require("morgan");
 const methodOverride = require("method-override");
 // import cors from "cors";
 const cors = require("cors");
-// import { auth } from "express-openid-connect";
-const { auth } = require("express-openid-connect");
 
 // connect to MongoDB with mongoose
 
