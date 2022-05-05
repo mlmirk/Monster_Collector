@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 import createError from "http-errors";
 import logger from "morgan";
 import methodOverride from "method-override";
-import { expressjwt, ExpressJwtRequest } from "express-jwt";
+import { expressjwt } from "express-jwt";
 import { JwksClient } from "jwks-rsa";
 import cors from "cors";
 import { auth } from "express-oauth2-jwt-bearer";
