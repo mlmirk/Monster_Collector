@@ -48,6 +48,7 @@ var jwtCheck = jwt({
 });
 
 app.use(jwtCheck);
+app.set("view engine", "ejs");
 
 // middleware
 
