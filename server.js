@@ -1,4 +1,3 @@
-
 //import "dotenv/config.js";
 require("dotenv").config();
 // import express from "express";
@@ -17,7 +16,8 @@ const cors = require("cors");
 const { auth } = require("express-openid-connect");
 
 // connect to MongoDB with mongoose
-import("./config/database.js");
+
+var config = require("./config/database.js");
 
 //auth0
 
