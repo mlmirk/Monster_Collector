@@ -8,7 +8,7 @@ import logger from "morgan";
 import methodOverride from "method-override";
 import passport from "passport";
 import cors from "cors";
-import auth from "express-openid-connect";
+import { auth } from "express-openid-connect";
 // connect to MongoDB with mongoose
 import("./config/database.js");
 
