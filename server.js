@@ -8,13 +8,22 @@ import logger from "morgan";
 import methodOverride from "method-override";
 import passport from "passport";
 import cors from "cors";
-
+import auth from "express-openid-connect";
 // connect to MongoDB with mongoose
 import("./config/database.js");
 
 // load passport
 import("./config/passport.js");
 
+//auth0
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.SESSION_SECRET,
+  baseURL: "https://mosserryan.github.io/JMRmonS_FrontEnd/",
+  clientID: "47Jm3kkR6DMitI7YGSh8eAPk9dlbpfQV",
+  issuerBaseURL: "https://dev-adr32rpm.us.auth0.com",
+};
 // require routes
 import { router as indexRouter } from "./routes/index.js";
 import { router as authRouter } from "./routes/auth.js";
@@ -43,7 +52,8 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), "public")
   )
 );
-
+//auth0 router intiialization
+app.use(auth(config));
 // session middleware
 app.use(
   session({

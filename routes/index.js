@@ -1,11 +1,9 @@
-import { Router } from 'express'
+import { Router } from "express";
 
-const router = Router()
+const router = Router();
 
-router.get('/', function (req, res) {
-  res.render('index', { title: 'Home Page', user: req.user ? req.user : null })
-})
+router.get("/", function (req, res) {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
 
-export {
-  router
-}
+export { router };
