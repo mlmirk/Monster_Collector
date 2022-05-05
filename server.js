@@ -1,14 +1,19 @@
-import "dotenv/config.js";
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import createError from "http-errors";
-
-import logger from "morgan";
-import methodOverride from "method-override";
-
-import cors from "cors";
-import { auth } from "express-openid-connect";
+//import "dotenv/config.js";
+require("dotenv").config();
+// import express from "express";
+const express = require("express");
+//import path from "path";
+// import { fileURLToPath } from "url";
+// import createError from "http-errors";
+const createError = require("http-errors");
+//import logger from "morgan";
+const logger = require("morgan");
+//import methodOverride from "method-override";
+const methodOverride = require("method-override");
+// import cors from "cors";
+const cors = require("cors");
+// import { auth } from "express-openid-connect";
+const { auth } = require("express-openid-connect");
 // connect to MongoDB with mongoose
 import("./config/database.js");
 
@@ -38,11 +43,11 @@ app.use(methodOverride("_method"));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  express.static(
-    path.join(path.dirname(fileURLToPath(import.meta.url)), "public")
-  )
-);
+// app.use(
+//   express.static(
+//     path.join(path.dirname(fileURLToPath(import.meta.url)), "public")
+//   )
+// );
 //auth0 router intiialization
 app.use(auth(config));
 // session middleware
@@ -72,4 +77,4 @@ app.use(function (err, req, res, next) {
   });
 });
 
-export { app };
+export { app, express };
