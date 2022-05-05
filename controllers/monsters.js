@@ -38,7 +38,9 @@ function update(req, res) {
 // delete individual monster by id
 function deleteMonster(req, res) {
   Monster.findByIdAndDelete(req.params.id)
-    .then((monster) => res.status(204).end())
+    .then(
+      res.redirect("https://mosserryan.github.io/JMRmonS_FrontEnd/monsters")
+    )
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
