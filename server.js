@@ -3,17 +3,14 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import createError from "http-errors";
-import session from "express-session";
+
 import logger from "morgan";
 import methodOverride from "method-override";
-import passport from "passport";
+
 import cors from "cors";
 import { auth } from "express-openid-connect";
 // connect to MongoDB with mongoose
 import("./config/database.js");
-
-// load passport
-import("./config/passport.js");
 
 //auth0
 const config = {
@@ -35,11 +32,6 @@ const app = express();
 app.use(cors());
 
 // view engine setup
-app.set(
-  "views",
-  path.join(path.dirname(fileURLToPath(import.meta.url)), "views")
-);
-app.set("view engine", "ejs");
 
 // middleware
 
@@ -55,27 +47,13 @@ app.use(
 //auth0 router intiialization
 app.use(auth(config));
 // session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: "lax",
-    },
-  })
-);
-app.use(passUserToView);
 
-// passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passUserToView);
 
 //custom middleware
 
 // router middleware
 app.use("/", indexRouter);
-app.use("/auth", authRouter);
 app.use("/monster", monsterRouter);
 
 // catch 404 and forward to error handler
