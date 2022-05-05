@@ -21,11 +21,19 @@ const { auth } = require("express-openid-connect");
 const config = {
   authRequired: false,
   auth0Logout: true,
+  secret: "a long, randomly-generated string stored in env",
   baseURL: "https://mosserryan.github.io/JMRmonS_FrontEnd/",
-  clientID: "EQ9zRcPManbgrj4EeYxfEEeQqzsD1SJe",
+  clientID: "DBcOEkKUWGQVaktG4XuSdMRsRLRIbXxo",
   issuerBaseURL: "https://dev-3splgcvt.us.auth0.com",
-  secret: "LONG_RANDOM_STRING",
 };
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
+// req.isAuthenticated is provided from the auth router
+app.get("/", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
