@@ -27,10 +27,7 @@ function update(req, res) {
   Monster.findByIdAndUpdate(req.params.id, req.body, { new: true })
     //.then((monster) => res.status(200).json(monster))
     .then(
-      res.redirect(
-        200,
-        "https://mosserryan.github.io/JMRmonS_FrontEnd/monsters"
-      )
+      res.redirect("https://mosserryan.github.io/JMRmonS_FrontEnd/monsters")
     )
     .catch((err) => {
       console.log(req.body);
@@ -50,7 +47,9 @@ function deleteMonster(req, res) {
 // create monster method
 function create(req, res) {
   Monster.create(req.body)
-    .then((monster) => res.status(201).json(monster))
+    .then(
+      res.redirect("https://mosserryan.github.io/JMRmonS_FrontEnd/monsters")
+    )
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
