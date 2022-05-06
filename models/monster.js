@@ -4,8 +4,6 @@ const Schema = mongoose.Schema;
 // create Monster Schema with Schema types
 const monsterSchema = new Schema({
   name: String,
-  imageURL: String,
-  isScary: Boolean,
   codeType: String,
   description: String,
 
