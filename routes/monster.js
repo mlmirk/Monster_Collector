@@ -18,7 +18,7 @@ monsterRouter.get("/", index);
 monsterRouter.get("/:id", show);
 monsterRouter.get("/search/:search", search);
 monsterRouter.post("/", create);
-monsterRouter.post("/:id", update);
+monsterRouter.post("/:id", update); // to be changed to a put route
 monsterRouter.delete("/:id", deleteMonster);
 
 module.exports = { monsterRouter };
